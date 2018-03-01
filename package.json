@@ -1,0 +1,57 @@
+{
+  "name": "dependency-report",
+  "version": "0.0.1",
+  "description": "Generate usage reports for JS dependencies through an AST",
+  "author": "Jeroen Ransijn (https://twitter.com/Jeroen_Ransijn)",
+  "keywords": [
+    "dependencies",
+    "packages",
+    "report",
+    "usage",
+    "tracking",
+    "npm"
+  ],
+  "repository": "segmentio/dependency-report",
+  "main": "lib/dependency-report.js",
+  "license": "ISC",
+  "files": ["lib"],
+  "scripts": {
+    "test": "xo && ava",
+    "precommit": "lint-staged"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "babylon": "^6.18.0",
+    "fs-extra": "^5.0.0",
+    "globby": "^7.1.1",
+    "p-limit": "^1.2.0",
+    "recast": "^0.13.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint-config-prettier": "^2.9.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "tempy": "^0.2.1",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "extends": ["prettier"],
+    "space": true,
+    "semicolon": false,
+    "rules": {
+      "indent": ["off"]
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.js": ["xo --fix", "prettier --write", "git add"],
+    "*.{json,md}": ["prettier --write", "git add"]
+  }
+}
