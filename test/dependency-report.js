@@ -13,6 +13,11 @@ import {
   Text,
   Card
 } from 'evergreen-ui'
+import Dialog from 'ui/Dialog'
+
+function justSomeCode() {
+
+}
 `)
 
 fileContents.push(`
@@ -25,6 +30,11 @@ import {
   Table,
   TableCell
 } from 'evergreen-ui'
+import Dialog from 'ui/Dialog'
+
+function justSomeCode() {
+
+}
 `)
 
 fileContents.push(`
@@ -38,7 +48,12 @@ import {
   TableCell,
   Popover,
   SelectMenu,
+  Dialog
 } from 'evergreen-ui'
+
+function justSomeCode() {
+
+}
 `)
 
 const setup = async () => {
@@ -91,7 +106,8 @@ test('get the usage of a package over a single file', async t => {
     Table: 2,
     TableCell: 2,
     Popover: 1,
-    SelectMenu: 1
+    SelectMenu: 1,
+    Dialog: 1
   })
 })
 
