@@ -126,3 +126,17 @@ test('get the usage of a single export for a package', async t => {
 
   t.is(usage, 3)
 })
+
+test('get the usage by export name', async t => {
+  const files = await setup()
+
+  const report = new DependencyReport({
+    files
+  })
+
+  await report.run()
+
+  const exportUsage = report.getByExportNames('Dialog')[0]
+
+  t.snapshot(exportUsage.packages)
+})
