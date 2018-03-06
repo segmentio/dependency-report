@@ -69,7 +69,7 @@ const setup = async () => {
 
 test('run a report over a single file', async t => {
   const files = await setup()
-  console.log()
+
   const report = new DependencyReport({
     files: [files[0]]
   })
@@ -95,20 +95,20 @@ test('get the usage of a package over a single file', async t => {
 
   await report.run()
 
-  const evergreenPackage = report.package('evergreen-ui')
+  const evergreenPackage = report.getPackages('evergreen-ui')[0]
 
   const usage = evergreenPackage.exportsUsage()
 
-  t.deepEqual(usage, {
-    Pane: 3,
-    Text: 3,
-    Card: 3,
-    Table: 2,
-    TableCell: 2,
-    Popover: 1,
-    SelectMenu: 1,
-    Dialog: 1
-  })
+  t.deepEqual(usage, [
+    { name: 'Pane', usage: 3 },
+    { name: 'Text', usage: 3 },
+    { name: 'Card', usage: 3 },
+    { name: 'Table', usage: 2 },
+    { name: 'TableCell', usage: 2 },
+    { name: 'Popover', usage: 1 },
+    { name: 'SelectMenu', usage: 1 },
+    { name: 'Dialog', usage: 1 }
+  ])
 })
 
 test('get the usage of a single export for a package', async t => {
@@ -120,9 +120,23 @@ test('get the usage of a single export for a package', async t => {
 
   await report.run()
 
-  const evergreenPackage = report.package('evergreen-ui')
+  const evergreenPackage = report.getPackages('evergreen-ui')[0]
 
   const usage = evergreenPackage.exportsUsage('Pane')
 
   t.is(usage, 3)
+})
+
+test('get the usage by export name', async t => {
+  const files = await setup()
+
+  const report = new DependencyReport({
+    files
+  })
+
+  await report.run()
+
+  const exportUsage = report.getByExportNames('Dialog')[0]
+
+  t.snapshot(exportUsage.packages)
 })
