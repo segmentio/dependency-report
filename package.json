@@ -1,5 +1,5 @@
 {
-  "name": "dependency-report",
+  "name": "@segment/dependency-report",
   "version": "0.0.1",
   "description": "Generate usage reports for JS dependencies through an AST",
   "author": "Jeroen Ransijn (https://twitter.com/Jeroen_Ransijn)",
