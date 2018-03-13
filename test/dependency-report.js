@@ -138,5 +138,18 @@ test('get the usage by export name', async t => {
 
   const exportUsage = report.getByExportNames('Dialog')[0]
 
-  t.snapshot(exportUsage.packages)
+  t.is(exportUsage.packages['ui/Dialog'].usage, 2)
+  t.is(exportUsage.packages['evergreen-ui'].usage, 1)
+})
+
+test('get the complete snapshot', async t => {
+  const files = await setup()
+
+  const report = new DependencyReport({
+    files
+  })
+
+  await report.run()
+
+  t.notThrows(() => JSON.stringify(report.toPlainObject(), null, 2))
 })
