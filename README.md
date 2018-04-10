@@ -7,9 +7,9 @@ _Note: only supports ES2015 `import` statements (not CommonJS `require` calls)._
 ## Install
 
 ```
-yarn add dependency-report
+yarn add @segment/dependency-report
 # or
-npm install dependency-report
+npm install @segment/dependency-report
 ```
 
 ## Usage
