@@ -17,7 +17,7 @@ npm install @segment/dependency-report
 ### Input
 
 ```
-$dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideSheet
+$ dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideSheet
 ```
 
 ### Results
@@ -44,7 +44,7 @@ $dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideShee
 ### input
 
 ```
-$dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideSheet,Popover,CornerDialog,RadioGroup
+$ dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideSheet,Popover,CornerDialog,RadioGroup
 ```
 
 ### Results
