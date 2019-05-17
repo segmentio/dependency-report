@@ -56,6 +56,16 @@ function justSomeCode() {
 }
 `)
 
+fileContents.push(`
+import React from 'react'
+import { Text } from 'evergreen-ui'
+
+// TypeScript
+function mcCode(value: string): number {
+  return 1
+}
+`)
+
 const setup = async () => {
   const arr = fileContents.map(async content => {
     const filePath = tempy.file()
@@ -80,7 +90,8 @@ test('run a report over a single file', async t => {
 test('run a report over a multiple files', async t => {
   const files = await setup()
   const report = new DependencyReport({
-    files
+    files,
+    parser: 'typescript'
   })
 
   t.notThrows(async () => report.run())
@@ -90,7 +101,8 @@ test('get the usage of a package over a single file', async t => {
   const files = await setup()
 
   const report = new DependencyReport({
-    files
+    files,
+    parser: 'typescript'
   })
 
   await report.run()
@@ -100,8 +112,8 @@ test('get the usage of a package over a single file', async t => {
   const usage = evergreenPackage.exportsUsage()
 
   t.deepEqual(usage, [
+    { name: 'Text', usage: 4 },
     { name: 'Pane', usage: 3 },
-    { name: 'Text', usage: 3 },
     { name: 'Card', usage: 3 },
     { name: 'Table', usage: 2 },
     { name: 'TableCell', usage: 2 },
@@ -115,7 +127,8 @@ test('get the usage of a single export for a package', async t => {
   const files = await setup()
 
   const report = new DependencyReport({
-    files
+    files,
+    parser: 'typescript'
   })
 
   await report.run()
@@ -131,7 +144,8 @@ test('get the usage by export name', async t => {
   const files = await setup()
 
   const report = new DependencyReport({
-    files
+    files,
+    parser: 'typescript'
   })
 
   await report.run()
@@ -146,7 +160,8 @@ test('get the complete snapshot', async t => {
   const files = await setup()
 
   const report = new DependencyReport({
-    files
+    files,
+    parser: 'typescript'
   })
 
   await report.run()
