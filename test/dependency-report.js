@@ -56,19 +56,34 @@ function justSomeCode() {
 }
 `)
 
-fileContents.push(`
+fileContents.push([
+  `
 import React from 'react'
 import { Text } from 'evergreen-ui'
 
 // TypeScript
-function mcCode(value: string): number {
-  return 1
+export default function mcCode(_value: string) {
+  return (
+    <Text>
+      Foo
+    </Text>
+  )
 }
-`)
+`,
+  'tsx'
+])
 
 const setup = async () => {
-  const arr = fileContents.map(async content => {
-    const filePath = tempy.file()
+  const arr = fileContents.map(async file => {
+    let content = file
+    let extension = 'js'
+
+    if (Array.isArray(file)) {
+      content = file[0]
+      extension = file[1]
+    }
+
+    const filePath = tempy.file({ extension })
     await fs.writeFile(filePath, content)
     return filePath
   })
@@ -110,7 +125,6 @@ test('get the usage of a package over a single file', async t => {
   const evergreenPackage = report.getPackages('evergreen-ui')[0]
 
   const usage = evergreenPackage.exportsUsage()
-
   t.deepEqual(usage, [
     { name: 'Text', usage: 4 },
     { name: 'Pane', usage: 3 },
