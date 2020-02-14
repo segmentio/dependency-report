@@ -97,6 +97,6 @@ $ dependency-report './client/**/*.js' --packages=evergreen-ui --exports=SideShe
 const DependencyReport = require('@segment/dependency-report')
 
 const report = new DependencyReport({
-  files: '**/*.js'
+  files: ['**/*.js']
 })
 ```
