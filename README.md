@@ -7,9 +7,9 @@ _Note: only supports ES2015 `import` statements (not CommonJS `require` calls)._
 ## Install
 
 ```
-yarn add @segment/dependency-report
+yarn add @sailthru/dependency-report
 # or
-npm install @segment/dependency-report
+npm install @sailthru/dependency-report
 ```
 
 ## CLI Usage
