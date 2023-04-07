@@ -36,7 +36,7 @@
     "minimatch": "^3.0.4",
     "ora": "^2.0.0",
     "p-limit": "^1.2.0",
-    "recast": "^0.18.1"
+    "recast": "^0.23.0"
   },
   "devDependencies": {
     "ava": "^1.4.1",
