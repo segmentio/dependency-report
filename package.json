@@ -27,7 +27,7 @@
     "node": ">=8"
   },
   "dependencies": {
-    "@babel/parser": "^7.4.4",
+    "@babel/parser": "^7.21.3",
     "arrify": "^1.0.1",
     "chalk": "^2.3.1",
     "fs-extra": "^5.0.0",
